@@ -13,7 +13,7 @@ class _SpalshPageState extends State<SpalshPage> {
   @override
   void initState() {
     Timer(Duration(seconds: 3), () {
-      Navigator.pushNamed(context, 'get-started');
+      Navigator.pushNamed(context, '/get-started');
     });
     super.initState();
   }

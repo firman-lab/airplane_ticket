@@ -1,3 +1,5 @@
+import 'package:airplane_ticket/ui/widget/custom_primary_button.dart';
+import 'package:airplane_ticket/ui/widget/custom_text_from_field.dart';
 import 'package:flutter/material.dart';
 import '../../shared/theme.dart';
 
@@ -21,151 +23,40 @@ class SignUpPage extends StatelessWidget {
 
     Widget inputSection() {
       Widget fullNamelInput() {
-        return Container(
-          margin: const EdgeInsets.only(bottom: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Full Name',
-                style: blackTextStyle,
-              ),
-              const SizedBox(
-                height: 6,
-              ),
-              TextFormField(
-                cursorColor: kBlackColor,
-                decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.symmetric(
-                    vertical: 14.0,
-                    horizontal: 10.0,
-                  ),
-                  hintText: 'full name',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(
-                      defaultRadius,
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(
-                      defaultRadius,
-                    ),
-                    borderSide: BorderSide(
-                      color: kPrimaryColor,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+        return const CustomTextFromField(
+          title: 'Full Name',
+          hintText: 'your name',
         );
       }
 
       Widget emailInput() {
-        return Container(
-          margin: const EdgeInsets.only(bottom: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Email',
-                style: blackTextStyle,
-              ),
-              const SizedBox(
-                height: 6,
-              ),
-              TextFormField(
-                cursorColor: kBlackColor,
-                decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.symmetric(
-                    vertical: 14.0,
-                    horizontal: 10.0,
-                  ),
-                  hintText: 'example@gmail.com',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(
-                      defaultRadius,
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(
-                      defaultRadius,
-                    ),
-                    borderSide: BorderSide(
-                      color: kPrimaryColor,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+        return const CustomTextFromField(
+          title: 'Email',
+          hintText: 'example@gmail.com',
         );
       }
 
       Widget passwordInput() {
-        return Container(
-          margin: const EdgeInsets.only(bottom: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Password',
-                style: blackTextStyle,
-              ),
-              const SizedBox(
-                height: 6,
-              ),
-              TextFormField(
-                cursorColor: kBlackColor,
-                obscureText: true,
-                decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.symmetric(
-                    vertical: 14.0,
-                    horizontal: 10.0,
-                  ),
-                  hintText: 'password',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(
-                      defaultRadius,
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(
-                      defaultRadius,
-                    ),
-                    borderSide: BorderSide(
-                      color: kPrimaryColor,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+        return const CustomTextFromField(
+          title: 'Password',
+          hintText: 'password',
+          obscureText: true,
+        );
+      }
+
+      Widget hobbyInput() {
+        return const CustomTextFromField(
+          title: 'Hobby',
+          hintText: 'food marathon..',
         );
       }
 
       Widget submitButton() {
-        return Container(
-          width: double.infinity,
-          height: 25,
-          child: TextButton(
-            onPressed: () {},
-            style: TextButton.styleFrom(
-              backgroundColor: kPrimaryColor,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(
-                  defaultRadius,
-                ),
-              ),
-            ),
-            child: Text(
-              'Get Started',
-              style: whiteTextStyle.copyWith(
-                fontSize: 18,
-                fontWeight: medium,
-              ),
-            ),
-          ),
+        return CustomPrimaryButton(
+          text: 'Get Started',
+          onPressed: () {
+            Navigator.pushNamed(context, '/bonus');
+          },
         );
       }
 
@@ -186,8 +77,27 @@ class SignUpPage extends StatelessWidget {
             fullNamelInput(),
             emailInput(),
             passwordInput(),
+            hobbyInput(),
             submitButton(),
           ],
+        ),
+      );
+    }
+
+    Widget tacButton() {
+      return Container(
+        alignment: Alignment.center,
+        margin: const EdgeInsets.only(
+          top: 40,
+          bottom: 73,
+        ),
+        child: Text(
+          'Terms and Conditions',
+          style: greyTextStyle.copyWith(
+            fontSize: 16,
+            fontWeight: light,
+            decoration: TextDecoration.underline,
+          ),
         ),
       );
     }
@@ -202,6 +112,7 @@ class SignUpPage extends StatelessWidget {
           children: [
             title(),
             inputSection(),
+            tacButton(),
           ],
         ),
       ),
